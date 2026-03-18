@@ -18,9 +18,8 @@ const QUICK_LINKS = [
 ];
 
 export default function HomePage({ setPage }) {
-  const [tick, setTick] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setTick((p) => (p + 1) % NAV_NOTICES.length), 3000);
+    const t = setInterval(() => {}, 3000);
     return () => clearInterval(t);
   }, []);
 

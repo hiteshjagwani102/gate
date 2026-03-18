@@ -16,7 +16,7 @@ export default function PhotoBox() {
     >
       <img
         src="/photo.jpeg"
-        alt="Candidate Photo"
+        alt="Candidate"
         style={{
           width: "100%",
           height: "100%",
