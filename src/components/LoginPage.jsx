@@ -10,15 +10,15 @@ export default function LoginPage({ setPage, setAuthed }) {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = () => {
-    if (!enrollment || !password || !captchaInput) {
+    if (!enrollment.trim() || !password.trim() || !captchaInput.trim()) {
       setError("Please fill all fields.");
       return;
     }
-    if (captchaInput !== captcha) {
+    if (captchaInput.trim() !== captcha) {
       setError("Invalid captcha. Please try again.");
       return;
     }
-    if (enrollment !== VALID_CREDS.enrollment || password !== VALID_CREDS.password) {
+    if (enrollment.trim() !== VALID_CREDS.enrollment || password.trim() !== VALID_CREDS.password) {
       setError("Invalid Enrollment ID or Password. Please check and try again.");
       return;
     }
