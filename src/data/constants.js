@@ -1,6 +1,6 @@
 export const VALID_CREDS = {
-  enrollment: "PI26S53016056",
-  password: "GATE@2026",
+  enrollment: "",
+  password: "",
 };
 
 export const RESULT_DATA = {
