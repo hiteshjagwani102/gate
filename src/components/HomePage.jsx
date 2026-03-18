@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { NAV_NOTICES } from "../data/constants";
 
 const INFO_CARDS = [
