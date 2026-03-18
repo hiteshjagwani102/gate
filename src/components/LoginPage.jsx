@@ -32,8 +32,8 @@ export default function LoginPage({ setPage, setAuthed }) {
   };
 
   const fields = [
-    { label: "Enrollment ID / Registration Number", val: enrollment, set: setEnrollment, placeholder: "e.g. PI26S53016056", type: "text" },
-    { label: "Password", val: password, set: setPassword, placeholder: "Enter your password", type: "password" },
+    { label: "Enrollment ID / Registration Number", val: enrollment, set: setEnrollment, placeholder: "", type: "text" },
+    { label: "Password", val: password, set: setPassword, placeholder: "", type: "password" },
   ];
 
   return (

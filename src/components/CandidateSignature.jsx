@@ -1,29 +1,34 @@
 export default function CandidateSignature() {
   return (
     <svg
-      viewBox="0 0 200 80"
+      viewBox="0 0 120 120"
       xmlns="http://www.w3.org/2000/svg"
       style={{ width: "100%", height: "100%" }}
     >
-      {/* Digitally signed indicator */}
-      <circle cx="160" cy="15" r="12" fill="none" stroke="#2e7d32" strokeWidth="1.5" />
-      <path d="M155 15 L158 18 L165 11" fill="none" stroke="#2e7d32" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Official seal - circular */}
+      <circle cx="60" cy="60" r="55" fill="none" stroke="#1a237e" strokeWidth="2" />
+      <circle cx="60" cy="60" r="50" fill="none" stroke="#1a237e" strokeWidth="1" strokeDasharray="2,3" />
       
-      {/* Signature path - more authentic electronic look */}
-      <path
-        d="M15 50 Q25 30, 35 45 Q42 55, 50 42 Q58 32, 68 48 Q75 58, 85 45 Q92 38, 100 52 Q108 62, 115 48 Q120 42, 128 55"
-        fill="none" stroke="#1a237e" strokeWidth="2.5"
-        strokeLinecap="round" strokeLinejoin="round" opacity="0.9"
-      />
+      {/* Inner circle */}
+      <circle cx="60" cy="60" r="45" fill="none" stroke="#1a237e" strokeWidth="1.5" />
       
-      {/* Timestamp/seal effect */}
-      <circle cx="160" cy="65" r="8" fill="none" stroke="#1a237e" strokeWidth="1" opacity="0.5" />
-      <text
-        x="160" y="69"
-        fontFamily="monospace"
-        fontSize="6" fill="#1a237e" opacity="0.4" textAnchor="middle"
-      >
-        ✓
+      {/* Verification checkmark in center */}
+      <circle cx="60" cy="60" r="20" fill="#e3f2fd" stroke="#2e7d32" strokeWidth="1.5" />
+      <path d="M52 60 L57 65 L68 54" fill="none" stroke="#2e7d32" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      
+      {/* SEAL text around circle */}
+      <defs>
+        <path id="circlePath" d="M 30, 60 A 30, 30 0 0,1 90, 60" fill="none" />
+      </defs>
+      <text fontFamily="Arial, sans-serif" fontSize="10" fill="#1a237e" fontWeight="bold" letterSpacing="2">
+        <textPath href="#circlePath" startOffset="50%" textAnchor="middle">
+          AUTHENTIC
+        </textPath>
+      </text>
+      
+      {/* Date below seal */}
+      <text x="60" y="105" fontFamily="monospace" fontSize="8" fill="#666" textAnchor="middle">
+        2026-03-19
       </text>
     </svg>
   );
