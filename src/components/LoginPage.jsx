@@ -27,7 +27,7 @@ export default function LoginPage({ setPage, setAuthed }) {
     setTimeout(() => {
       setLoading(false);
       setAuthed(true);
-      setPage("result");
+      setPage("status");
     }, 1200);
   };
 

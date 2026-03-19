@@ -1,10 +1,15 @@
 import { useRef, useState } from "react";
 import Scorecard from "./Scorecard";
-import { RESULT_DATA } from "../data/constants";
+import { RESULT_DATA, SUBJECT_RESULTS } from "../data/constants";
 
-export default function ResultPage({ setPage }) {
+export default function ResultPage({ setPage, selectedSubject }) {
   const scorecardRef = useRef();
   const [downloading, setDownloading] = useState(false);
+  
+  // Get the result data based on selected subject, fallback to default
+  const resultData = selectedSubject && SUBJECT_RESULTS[selectedSubject] 
+    ? SUBJECT_RESULTS[selectedSubject] 
+    : RESULT_DATA;
 
   const loadScript = (src) =>
     new Promise((res, rej) => {
@@ -56,7 +61,7 @@ export default function ResultPage({ setPage }) {
         }
       }
 
-      pdf.save(`GATE2026_Scorecard_${RESULT_DATA.registrationNumber}.pdf`);
+      pdf.save(`GATE2026_Scorecard_${resultData.registrationNumber}.pdf`);
     } catch (err) {
       console.error("PDF generation failed:", err);
       alert("PDF download failed. Please use Print (Ctrl+P) and save as PDF.");
@@ -72,14 +77,14 @@ export default function ResultPage({ setPage }) {
         {/* Action bar */}
         <div className="no-print" style={{ display: "flex", gap: 10, marginBottom: 14 }}>
           <button
-            onClick={() => setPage("home")}
+            onClick={() => setPage("status")}
             style={{
               background: "#546e7a", color: "#fff", border: "none",
               padding: "8px 16px", borderRadius: 3,
               cursor: "pointer", fontSize: 13,
             }}
           >
-            ← Back to Home
+            ← Back to Subject Selection
           </button>
 
           <button
@@ -112,7 +117,7 @@ export default function ResultPage({ setPage }) {
         </div>
 
         {/* Scorecard document */}
-        <Scorecard scorecardRef={scorecardRef} />
+        <Scorecard scorecardRef={scorecardRef} resultData={resultData} />
 
         <div
           className="no-print"

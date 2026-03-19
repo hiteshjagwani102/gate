@@ -2,14 +2,16 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
+import ApplicationStatusPage from "./components/ApplicationStatusPage";
 import ResultPage from "./components/ResultPage";
 
 export default function App() {
   const [page, setPage] = useState("home");
   const [authed, setAuthed] = useState(false);
+  const [selectedSubject, setSelectedSubject] = useState(null);
 
   const safePage = (p) => {
-    if (p === "result" && !authed) {
+    if ((p === "status" || p === "result") && !authed) {
       setPage("login");
       return;
     }
@@ -21,7 +23,8 @@ export default function App() {
       <Navbar page={page} setPage={safePage} />
       {page === "home" && <HomePage setPage={safePage} />}
       {page === "login" && <LoginPage setPage={safePage} setAuthed={setAuthed} />}
-      {page === "result" && authed && <ResultPage setPage={safePage} />}
+      {page === "status" && authed && <ApplicationStatusPage setPage={safePage} setSelectedSubject={setSelectedSubject} />}
+      {page === "result" && authed && <ResultPage setPage={safePage} selectedSubject={selectedSubject} />}
     </div>
   );
 }

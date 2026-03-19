@@ -4,18 +4,17 @@ import PhotoBox from "./PhotoBox";
 import QRCode from "./QRCode";
 import { RESULT_DATA } from "../data/constants";
 
-const d = RESULT_DATA;
+export default function Scorecard({ scorecardRef, resultData }) {
+  const d = resultData || RESULT_DATA;
 
-const DETAIL_ROWS = [
-  ["Name of the Candidate", d.name],
-  ["Name of the Parent/Guardian", d.parentGuardian],
-  ["Registration No.", d.registrationNumber],
-  ["Date of Birth", d.dob],
-  ["Test Paper", d.testPaper],
-  ["Date of Examination", d.dateOfExamination],
-];
-
-export default function Scorecard({ scorecardRef }) {
+  const DETAIL_ROWS = [
+    ["Name of the Candidate", d.name],
+    ["Name of the Parent/Guardian", d.parentGuardian],
+    ["Registration No.", d.registrationNumber],
+    ["Date of Birth", d.dob],
+    ["Test Paper", d.testPaper],
+    ["Date of Examination", d.dateOfExamination],
+  ];
   return (
     <div
       ref={scorecardRef}
